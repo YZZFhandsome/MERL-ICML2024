@@ -45,7 +45,8 @@ def clip_loss(x, y, temperature=0.07, device='cuda'):
     return (loss_t + loss_i), acc1, acc5
  ```
 
-公式三：（utils_trainer.py）
+公式三和公式四：（utils_trainer.py）
+
 <img src="image_result/公式3-4.png" width="70%" alt="公式三、四示意图">
 <img src="image_result/gonshi4.png" width="70%" alt="公式四示意图">
 
@@ -122,4 +123,5 @@ def clip_loss(x, y, temperature=0.07, device='cuda'):
    <img src="image_result/zeroshot_ptbxl_!.png" width="80%" alt="PTB-XL零样本分类结果图1">
    <img src="image_result/zeroshot_ptbxl_1.png" width="80%" alt="PTB-XL零样本分类结果图2">
    <img src="image_result/linear_1%.png" width="80%" alt="ptb-xl-rhythm线性探测1%数据结果图">
+
 
