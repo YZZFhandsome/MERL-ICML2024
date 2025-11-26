@@ -17,9 +17,12 @@ GitHub: https://github.com/cheliu-computation/MERL-ICML2024
    测试阶段利用 LLM 从专家验证的外部知识库（如 SNOMED-CT）中动态提取疾病亚型与信号特征，生成结构化提示，有效降低大模型“幻觉”问题，显著提升零样本分类的准确性。
 
 ## 3. 文章框架
+<img src="image_result/framework.png" width="80%" alt="MERL 文章整体框架图">
 
 ## 4.核心公式以及对应代码
 公式一和公式二：（utils_loss.py）
+<img src="image_result/gonshi1-2.png" width="70%" alt="公式一、二示意图">
+
  ```python
 def clip_loss(x, y, temperature=0.07, device='cuda'):
     x = F.normalize(x, dim=-1)  # 嵌入归一化，对应公式中相似度的余弦计算前提
@@ -43,6 +46,9 @@ def clip_loss(x, y, temperature=0.07, device='cuda'):
  ```
 
 公式三：（utils_trainer.py）
+<img src="image_result/公式3-4.png" width="70%" alt="公式三、四示意图">
+<img src="image_result/gonshi4.png" width="70%" alt="公式四示意图">
+
  ```python
                 with autocast():
                     #报告tokenize与模型前向
@@ -91,7 +97,7 @@ def clip_loss(x, y, temperature=0.07, device='cuda'):
                     uma_loss, _, _ = clip_loss(agg_proj_ecg_emb1, agg_proj_ecg_emb2, device=self.device)
                     loss = cma_loss + uma_loss
  ```
-## 5.复现过程
+## 5.复现过程(exp_rhythm_test为linear用ptbxl数据集下游使用1%复现的结构
 1. 环境配置
    - git 或 download 代码仓库到本地：`https://github.com/cheliu-computation/MERL-ICML2024.git`
    - 环境准备：新建符合 requirements 的 conda 虚拟环境
@@ -113,3 +119,7 @@ def clip_loss(x, y, temperature=0.07, device='cuda'):
      cd MERL/finetune/sub_script
      bash run_all_linear.sh
 5. 复现结果（由于数据集过大，因此只做了zeroshot在PTB-XL（resnet18为骨干）和ptb-xl-rhythm的线性探测（VIT-TINY为骨干））
+   <img src="image_result/zeroshot_ptbxl_!.png" width="80%" alt="PTB-XL零样本分类结果图1">
+   <img src="image_result/zeroshot_ptbxl_1.png" width="80%" alt="PTB-XL零样本分类结果图2">
+   <img src="image_result/linear_1%.png" width="80%" alt="ptb-xl-rhythm线性探测1%数据结果图">
+
