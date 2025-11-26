@@ -98,7 +98,7 @@ def clip_loss(x, y, temperature=0.07, device='cuda'):
                     uma_loss, _, _ = clip_loss(agg_proj_ecg_emb1, agg_proj_ecg_emb2, device=self.device)
                     loss = cma_loss + uma_loss
  ```
-## 5.复现过程(exp_rhythm_test为linear用ptbxl数据集下游使用1%复现的结构
+## 5.复现过程(exp_rhythm_test为linear用ptbxl数据集下游使用1%复现的结果）
 1. 环境配置
    - git 或 download 代码仓库到本地：`https://github.com/cheliu-computation/MERL-ICML2024.git`
    - 环境准备：新建符合 requirements 的 conda 虚拟环境
@@ -122,6 +122,7 @@ def clip_loss(x, y, temperature=0.07, device='cuda'):
 5. 复现结果（由于数据集过大，因此只做了zeroshot在PTB-XL（resnet18为骨干）和ptb-xl-rhythm的线性探测（VIT-TINY为骨干））
    <img src="image_result/zeroshot_ptbxl_!.png" width="80%" alt="PTB-XL零样本分类结果图1">
    <img src="image_result/zeroshot_ptbxl_1.png" width="80%" alt="PTB-XL零样本分类结果图2">
-   <img src="image_result/linear_1%.png" width="80%" alt="ptb-xl-rhythm线性探测1%数据结果图">
+   <img src="image_result/exp_rhythm_test_linear-vit_tiny-B-16ptbxl_rhythmR-1.png" width="80%" alt="ptb-xl-rhythm线性探测1%数据结果图">
+
 
 
