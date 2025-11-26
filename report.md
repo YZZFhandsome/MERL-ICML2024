@@ -20,6 +20,7 @@ GitHub: https://github.com/cheliu-computation/MERL-ICML2024
 <img src="image_result/framework.png" width="85%" alt="MERL 文章整体框架图">
 ## 4.核心公式以及对应代码
 公式一和公式二：（utils_loss.py）
+<img src="image_result/gonshi1-2.png" width="85%" alt="公式一、二示意图">
  ```python
 def clip_loss(x, y, temperature=0.07, device='cuda'):
     x = F.normalize(x, dim=-1)  # 嵌入归一化，对应公式中相似度的余弦计算前提
@@ -42,7 +43,9 @@ def clip_loss(x, y, temperature=0.07, device='cuda'):
     return (loss_t + loss_i), acc1, acc5
  ```
 
-公式三：（utils_trainer.py）
+公式三和公式四：（utils_trainer.py）
+<img src="image_result/公式3-4.png" width="80%" alt="公式三、四示意图">
+<img src="image_result/gonshi4.png" width="80%" alt="公式四示意图">
  ```python
                 with autocast():
                     #报告tokenize与模型前向
@@ -113,4 +116,5 @@ def clip_loss(x, y, temperature=0.07, device='cuda'):
      cd MERL/finetune/sub_script
      bash run_all_linear.sh
 5. 复现结果（由于数据集过大，因此只做了zeroshot在PTB-XL（resnet18为骨干）和ptb-xl-rhythm的线性探测（VIT-TINY为骨干））
+
 
