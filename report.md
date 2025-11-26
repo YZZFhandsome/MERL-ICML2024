@@ -41,8 +41,7 @@ def clip_loss(x, y, temperature=0.07, device='cuda'):
     acc5 = (i2t_acc5 + t2i_acc5) / 2.
     # 最终返回的损失是双向损失的平均，公式一是单方向损失（逻辑一致）
     return (loss_t + loss_i), acc1, acc5
- ```
-
+ '''
 公式三和公式四：（utils_trainer.py）
 <img src="image_result/公式3-4.png" width="80%" alt="公式三、四示意图">
 <img src="image_result/gonshi4.png" width="80%" alt="公式四示意图">
@@ -116,5 +115,6 @@ def clip_loss(x, y, temperature=0.07, device='cuda'):
      cd MERL/finetune/sub_script
      bash run_all_linear.sh
 5. 复现结果（由于数据集过大，因此只做了zeroshot在PTB-XL（resnet18为骨干）和ptb-xl-rhythm的线性探测（VIT-TINY为骨干））
+
 
 
